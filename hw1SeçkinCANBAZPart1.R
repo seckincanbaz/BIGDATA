@@ -1,0 +1,23 @@
+library(tidyverse)
+library(readr)
+library(data.table)
+library(ggplot2)
+library(scales)
+library(dplyr)
+library(knitr)
+setwd("C:\Users\seckin.canbaz\Desktop\big data\1st week hw")
+setwd("C:/Users/seckin.canbaz/Desktop/big data/1st week hw")
+library(readr)
+UNdata_Export_20171026_130851047 <- read_csv("C:/Users/seckin.canbaz/Desktop/big data/1st week hw/UNdata_Export_20171026_130851047.csv")
+View(UNdata_Export_20171026_130851047)
+dim(UNdata_Export_20171026_130851047)
+glimpse(UNdata_Export_20171026_130851047)
+summary(UNdata_Export_20171026_130851047)
+p1 <- ggplot(data = UNdata_Export_20171026_130851047, aes(x=Year, y=Rate))
+p1 + geom_bar(stat="identity")
+p3 <- ggplot(data = UNdata_Export_20171026_130851047, aes(x=Year, y=Count))
+p3 + geom_point(stat = "identity")
+filter1<- UNdata_Export_20171026_130851047 %>%
+  group_by(`Country or Area`) %>%
+  filter(`Country or Area`=="Turkey") %>%  ggplot(aes(x=Year, y = Count)) + geom_bar(stat = "identity")
+filter1
